@@ -1,0 +1,20 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            MTG Gamer
+        </title>
+
+        @Scripts.Render("~/bundles/angularJS")
+        @Scripts.Render("~/bundles/angularApp")
+        @Scripts.Render("~/bundles/bootstrap")
+        
+        @Styles.Render("~/Content/css")
+    </head>
+
+    <body data-ng-app="mainApp">
+        <div data-ng-view></div>
+    </body>
+</html>
