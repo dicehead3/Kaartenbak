@@ -14,6 +14,8 @@ namespace Domain.Cards
             Legality = legality;
         }
 
+        protected Format() { }
+
         public virtual string Name
         {
             get { return _name; }

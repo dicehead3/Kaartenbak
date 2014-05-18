@@ -7,11 +7,10 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using Utilities.ApplicationSettings;
-using Environment = NHibernate.Cfg.Environment;
 
 namespace Data.Utilities
 {
-    public class NHibernateHelper
+    public static class NHibernateHelper
     {
         private static readonly Configuration Configuration;
         public static readonly ISessionFactory SessionFactory;
@@ -21,13 +20,14 @@ namespace Data.Utilities
             var applicationSettings = new ApplicationSettings();
             Configuration = new Configuration();
 
-            Configuration.SetProperty(Environment.ConnectionString, applicationSettings.ConnectionString);
+            Configuration.SetProperty(NHibernate.Cfg.Environment.ConnectionString, applicationSettings.ConnectionString);
             Configuration.Configure();
 
-            SessionFactory =
-                Fluently.Configure(Configuration)
-                    .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
-                    .BuildSessionFactory();
+            var currentAssembly = Assembly.GetExecutingAssembly();
+
+            SessionFactory = Fluently.Configure(Configuration)
+                .Mappings(m => m.FluentMappings.AddFromAssembly(currentAssembly))
+                .BuildSessionFactory();
         }
 
         public static void CreateDatabaseSchema()

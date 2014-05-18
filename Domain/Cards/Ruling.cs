@@ -15,6 +15,11 @@ namespace Domain.Cards
             Rule = rule;
         }
 
+        protected Ruling()
+        {
+            
+        }
+
         public virtual DateTime ReleasedAt
         {
             get { return _releasedAt; }

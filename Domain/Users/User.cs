@@ -43,27 +43,27 @@ namespace Domain.Users
             get { return _identity ?? (_identity = new ClaimsIdentity(Email)); }
         }
 
-        public virtual ICollection<Role> Roles
+        public virtual IEnumerable<Role> Roles
         {
             get { return _roles; }
         }
 
-        public virtual IList<Card> Cards
+        public virtual IEnumerable<Card> Cards
         {
             get { return _cards; }
         }
 
-        public virtual IList<Deck> Decks
+        public virtual IEnumerable<Deck> Decks
         {
             get { return _decks; }
         } 
         
-        public bool IsInRole(string role)
+        public virtual bool IsInRole(string role)
         {
             return IsInRole((Role) Enum.Parse(typeof (Role), role, true));
         }
 
-        public bool IsInRole(Role role)
+        public virtual bool IsInRole(Role role)
         {
             return _roles.Contains(role);
         }

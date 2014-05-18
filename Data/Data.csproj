@@ -74,6 +74,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\CardMapping.cs" />
+    <Compile Include="Mappings\DeckMapping.cs" />
+    <Compile Include="Mappings\FormatMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\RulingMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CardRepository.cs" />
     <Compile Include="Repositories\DeckRepository.cs" />
@@ -95,7 +104,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mappings\" />
+    <Content Include="CustomSql\1_AlterUsersTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
