@@ -4,18 +4,21 @@ using Web.ViewModels.Login;
 
 namespace Web.Controllers
 {
+    [RoutePrefix("Login")]
     public class LoginApiController : ApiController
     {
         private readonly ILoginService _loginService;
         private readonly IUserService _userService;
-
+        
         public LoginApiController(ILoginService loginService, IUserService userService)
         {
             _loginService = loginService;
             _userService = userService;
         }
 
-        public object Login([FromBody]LoginViewModel viewModel)
+        [HttpPost]
+        [Route("Login")]
+        public object Login(LoginViewModel viewModel)
         {
             var userLoginRequest = new UserLoginRequest
             {

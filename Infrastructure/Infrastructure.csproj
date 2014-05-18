@@ -11,6 +11,8 @@
     <AssemblyName>Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +50,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -58,19 +66,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationSettings\ApplicationSettings.cs" />
-    <Compile Include="ApplicationSettings\IApplicationSettings.cs" />
-    <Compile Include="ApplicationSettings\IStaticApplicationSettings.cs" />
-    <Compile Include="ApplicationSettings\StaticApplicationSettings.cs" />
     <Compile Include="Dto\Card\CardDto.cs" />
     <Compile Include="Dto\Card\FormatDto.cs" />
     <Compile Include="Dto\Card\RulingDto.cs" />
     <Compile Include="Dto\Deck\DeckDto.cs" />
     <Compile Include="Dto\User\UserDto.cs" />
-    <Compile Include="Encryption\Encryptor.cs" />
-    <Compile Include="Encryption\IEncryptor.cs" />
-    <Compile Include="Policies\IPasswordPolicy.cs" />
-    <Compile Include="Policies\PasswordPolicy.cs" />
+    <Compile Include="IoC\DomainRegistry.cs" />
+    <Compile Include="IoC\InfrastructureRegistry.cs" />
+    <Compile Include="IoC\UtilitiesRegistryParameters.cs" />
+    <Compile Include="IoC\InfrastructureRegistryParameters.cs" />
+    <Compile Include="IoC\UtilitiesRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ChangePasswordRequest.cs" />
     <Compile Include="Services\ChangePasswordResponse.cs" />
@@ -84,6 +89,10 @@
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{84d5f3be-973a-4467-a1b6-7405f8e1e364}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{488968ca-67aa-49b8-b3f1-a01a37f4fd18}</Project>
       <Name>Domain</Name>
@@ -93,8 +102,18 @@
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

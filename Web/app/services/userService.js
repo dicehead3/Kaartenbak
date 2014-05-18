@@ -2,7 +2,7 @@
 
     return {
         login: function(user) {
-            return $http.post('api/LoginApi/Login', user);
+            return $http.post('Login/Login', user);
         }
     };
 }]);

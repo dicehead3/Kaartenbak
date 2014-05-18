@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{488968CA-67AA-49B8-B3F1-A01A37F4FD18}"
 EndProject
@@ -27,6 +27,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiAdapter", "ApiAdapter", "{11DC76BF-EDCA-40FD-90B9-488146FEC009}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAdapter", "ApiAdapter\ApiAdapter.csproj", "{DA14CFC7-2174-4BD3-A0C0-69D68F685132}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{BA9DDB99-50F9-4FE8-8724-7DC04363ED6F}"
+	ProjectSection(SolutionItems) = preProject
+		Config\Application.config = Config\Application.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseHelper", "DatabaseHelper\DatabaseHelper.csproj", "{6D2EE720-AFA2-421D-A24C-7DC76378A35B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +125,16 @@ Global
 		{DA14CFC7-2174-4BD3-A0C0-69D68F685132}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DA14CFC7-2174-4BD3-A0C0-69D68F685132}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DA14CFC7-2174-4BD3-A0C0-69D68F685132}.Release|x64.ActiveCfg = Release|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

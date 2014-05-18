@@ -2,11 +2,11 @@
 using System.Linq;
 using Domain.AbstractRepositories;
 using Domain.Users;
-using Infrastructure.ApplicationSettings;
-using Infrastructure.Encryption;
-using Infrastructure.Policies;
 using NHibernate;
 using NHibernate.Linq;
+using Utilities.ApplicationSettings;
+using Utilities.Encryption;
+using Utilities.Policies;
 
 namespace Data.Repositories
 {

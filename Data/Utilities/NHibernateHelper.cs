@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using FluentNHibernate.Cfg;
-using Infrastructure.ApplicationSettings;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using Utilities.ApplicationSettings;
 using Environment = NHibernate.Cfg.Environment;
 
 namespace Data.Utilities
@@ -14,7 +14,7 @@ namespace Data.Utilities
     public class NHibernateHelper
     {
         private static readonly Configuration Configuration;
-        private static readonly ISessionFactory SessionFactory;
+        public static readonly ISessionFactory SessionFactory;
 
         static NHibernateHelper()
         {

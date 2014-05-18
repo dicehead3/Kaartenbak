@@ -1,5 +1,5 @@
-﻿app.controller('loginController', ["$scope", "$rootScope", "userService",
-    function ($scope, $rootScope, userService) {
+﻿app.controller('loginController', ["$scope", "$rootScope", "$location", "userService",
+    function ($scope, $rootScope, $location, userService) {
 
     $scope.user = {
         email: '',
@@ -19,8 +19,10 @@
         userService.login($scope.user).success(function (data) {
             console.log(data, typeof(data.loginSuccessfull));
             if (data.loginSuccessfull == true) {
-                console.log('success');
+
+                $scope.$apply($location.url("/Overview/Dashboard"));
             } else {
+                //add flash message to show an error occured
                 console.log('error', data.Message);
             }
         });
