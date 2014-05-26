@@ -14,7 +14,7 @@ namespace Web.IoC
         public WebRegistry()
         {
             Common();
-            //NHibernate();
+            NHibernate();
         }
 
         private void Common()

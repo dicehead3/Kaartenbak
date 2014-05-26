@@ -1,5 +1,7 @@
-﻿using System.Web.Http;
-using Infrastructure.Services;
+﻿using System;
+using System.Web.Http;
+using Infrastructure.Services.Login;
+using Infrastructure.Services.User;
 using Web.ViewModels.Login;
 
 namespace Web.Controllers
@@ -20,7 +22,7 @@ namespace Web.Controllers
         [Route("Login")]
         public object Login(LoginViewModel viewModel)
         {
-            var userLoginRequest = new UserLoginRequest
+            var userLoginRequest = new LoginRequest
             {
                 Email = viewModel.Email,
                 Password = viewModel.Password
@@ -49,6 +51,28 @@ namespace Web.Controllers
                 LoginSuccessfull = true,
                 User = userInfoResponse.User
             };
+        }
+
+        [HttpPost]
+        [Route("Register")]
+        public object Register(RegisterViewModel viewModel)
+        {
+            if (!viewModel.Password.Equals(viewModel.PasswordVerification, StringComparison.InvariantCulture))
+            {
+                return new {RegisterSuccessfull = false};
+            }
+
+            var registerRequest = new RegisterRequest
+            {
+                Username = viewModel.Username,
+                Name = viewModel.Name,
+                Email = viewModel.Email,
+                Password = viewModel.Password
+            };
+
+            var registerResponse = _loginService.Register(registerRequest);
+            return null;
+
         }
     }
 }

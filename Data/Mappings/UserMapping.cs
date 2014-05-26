@@ -19,6 +19,10 @@ namespace Data.Mappings
                 .Access.CamelCaseField(Prefix.Underscore)
                 .Not.Nullable()
                 .Length(9999);
+            Map(x => x.Username)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Not.Nullable()
+                .Length(9999);
             Map(x => x.Email)
                 .Access.CamelCaseField(Prefix.Underscore)
                 .Not.Nullable()

@@ -12,6 +12,7 @@ namespace Domain.Users
 {
     public class User: Entity, IPrincipal
     {
+        private string _username;
         private string _name;
         private string _email;
         private IIdentity _identity;
@@ -19,18 +20,26 @@ namespace Domain.Users
         private readonly IList<Card> _cards = new List<Card>();
         private readonly IList<Deck> _decks = new List<Deck>(); 
 
-        public User(string email, string name, IUserRepository repository)
+        public User(string username, string name, string email, IUserRepository repository)
         {
-            Name = name;
+            _username = username;
+            _name = name.Required();
             CheckEmail(email, repository);
         }
 
-        protected User() { }
-        
+        protected User()
+        {
+        }
+
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value.Required("Displayname is required"); }
+            set { _name = value; }
+        }
+
+        public virtual string Username
+        {
+            get { return _username; }
         }
         
         public virtual string Email

@@ -3,45 +3,91 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 
-                <div class="panel-heading">
+                <div class="panel-heading" data-ng-if="!showRegister">
                     <span class="glyphicon glyphicon-lock"></span> MTG Gamer - Sign in
+                </div>
+                
+                <div class="panel-heading" data-ng-if="showRegister">
+                    <span class="glyphicon glyphicon-lock"></span> MTG Gamer - Register
                 </div>
 
                 <div class="panel-body">
                     <form name="login_form" role="form" novalidate>
                         
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Email</label>
-                            <div class="col-md-8">
-                                <input type="email" data-ng-model="user.email" name="email" class="form-control" required/>
+                            <label class="col-md-5 control-label">Username</label>
+                            <div class="col-md-7">
+                                <input type="text" data-ng-model="user.username" name="username" class="form-control" placeholder="Username" ng-required />
+
+                                <span ng-show="login_form.username.$error.required && submitted && showRegister">
+                                    <span>Your username is required to register</span>
+                                </span>
                                 
-                                <span ng-show="login_form.email.$error.required && submitted">
-                                    <span>Your email address is required for login</span>
+                                <span ng-show="login_form.username.$error.required && submitted && !showRegister">
+                                    <span>Your username is required to login</span>
                                 </span>
                             </div>
                         </div>
-                        <br/>
-                        <br/>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
-                            <div class="col-md-8">
-                                <input type="password" data-ng-model="user.password" name="password" class="form-control" required/>
+
+                        <div class="form-group" ng-if="showRegister">
+                            <label class="col-md-5 control-label">Name</label>
+                            <div class="col-md-7">
+                                <input type="text" data-ng-model="user.name" name="name" class="form-control" placeholder="Name" ng-required />
+
+                                <span ng-show="login_form.name.$error.required && submitted">
+                                    <span>Your name is required to register</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-if="showRegister">
+                            <label class="col-md-5 control-label">Email</label>
+                            <div class="col-md-7">
+                                <input type="email" data-ng-model="user.email" name="email" class="form-control" placeholder="Email" ng-required />
                                 
+                                <span ng-show="login_form.email.$error.required && submitted">
+                                    <span>Your email address is required to register</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">Password</label>
+                            <div class="col-md-7">
+                                <input type="password" data-ng-model="user.password" name="password" class="form-control" ng-required />
+
                                 <span ng-show="login_form.password.$error.required && submitted">
-                                    <span>Your password is required for login</span>
+                                    <span>Your password is required to register an account</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-if="showRegister">
+                            <label class="col-md-5 control-label">Password verification</label>
+                            <div class="col-md-7">
+                                <input type="password" data-ng-model="user.passwordVerification" name="passwordVerification" class="form-control" ng-required equals="user.password" />
+
+                                <span ng-show="login_form.passwordVerification.$error.required && submitted">
+                                    <span>Verify your password</span>
+                                </span>
+
+                                <span ng-show="login_form.passwordVerification.$error.equals && user.password.length > 0 && user.passwordVerification.length > 0">
+                                    <span>Verification does not equal password</span>
                                 </span>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <button class="btn btn-primary" ng-click="login()" style="margin-left: 12px;">Sign in</button>
+                            <button class="btn btn-primary" ng-click="login()" style="margin-left: 12px;" ng-if="!showRegister">Sign in</button>
+                            <button class="btn btn-primary" ng-click="registerUser()" style="margin-left: 12px;"ng-if="showRegister">Register</button>
                         </div>
                     </form>
                 </div>
 
                 <div class="panel-footer">
                     <a ng-href="#/ResetPassword">Reset password</a> 
-                    <a class="pull-right" ng-href="#/Register">Register</a>
+                    <a class="pull-right" ng-click="goToRegister()" ng-if="!showRegister">Register</a>
+                    <a class="pull-right" ng-click="goToSignIn()" ng-if="showRegister">Sign in</a>
                 </div>
             </div>
         </div>

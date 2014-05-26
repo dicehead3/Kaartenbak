@@ -12,7 +12,8 @@ namespace Web
             
             bundles.Add(new ScriptBundle("~/bundles/angularJS").Include(
                 "~/Scripts/AngularJS/angular.js",
-                "~/Scripts/AngularJS/angular-route.js"));
+                "~/Scripts/AngularJS/angular-route.js",
+                "~/Scripts/AngularJs/angular.isEmpty.js"));
             
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/Bootstrap/ui-bootstrap.*"));

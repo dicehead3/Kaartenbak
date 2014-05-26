@@ -7,6 +7,7 @@ using NHibernate.Linq;
 using Utilities.ApplicationSettings;
 using Utilities.Encryption;
 using Utilities.Policies;
+using Utilities.Transactions;
 
 namespace Data.Repositories
 {
@@ -30,35 +31,30 @@ namespace Data.Repositories
             get { return _session; }
         }
 
-        public override void Save(User card)
+        public override void Save(User user)
         {
-            if (!card.ExistsInDatabase())
+            if (!user.ExistsInDatabase())
             {
                 throw new InvalidOperationException("User is not yet created, can't save.");
             }
 
-            base.Save(card);
+            base.Save(user);
         }
 
-        public void Create(User user, string password)
+        public User Create(User user)
         {
             if (user.Id != 0)
             {
                 throw new InvalidOperationException("User already exists");
             }
 
-            if (!_passwordPolicy.Validate(password))
+            using (var transaction = new Transaction(_session))
             {
-                throw new ArgumentException("Password is not valid");
+                base.Save(user);
+                transaction.Commit();
             }
 
-            base.Save(user);
-
-            const string query = "UPDATE Users SET Password = :Password WHERE Id = :UserId";
-            Session.CreateSQLQuery(query)
-                .SetInt32("UserId", user.Id)
-                .SetString("Password", HashPassword(password))
-                .UniqueResult();
+            return user;
         }
 
         public bool EmailExists(string email)
@@ -66,55 +62,6 @@ namespace Data.Repositories
             return Session.Query<User>().Any(x => x.Email == email);
         }
 
-        public string GeneratePasswordResetHash(User user)
-        {
-            var hash = _encryptor.Encrypt(Guid.NewGuid().ToString());
-            const string query = @"UPDATE Users
-                                   SET ResetPasswordHash = :Hash,
-                                       ResetPasswordExpireDateTime = :ExpireDateTime
-                                   WHERE Id = :UserId";
-            Session.CreateSQLQuery(query)
-                .SetInt32("UserId", user.Id)
-                .SetString("Hash", hash)
-                .SetDateTime("ExpireDateTime", DateTime.UtcNow.Add(_staticApplicationSettings.PasswordResetExpirationPeriodInMinutes))
-                .UniqueResult();
-
-            return hash;
-        }
-
-        public bool IsPasswordResetHashValid(User user, string hash)
-        {
-            const string query = @"SELECT ResetPasswordHash
-                                   FROM Users
-                                   WHERE Id = :UserId
-                                    and ResetPasswordExpireDateTime < :Now";
-            var hashFromDatabase =
-                Session.CreateSQLQuery(query)
-                    .SetInt32("UserId", user.Id)
-                    .SetDateTime("Now", DateTime.UtcNow)
-                    .UniqueResult<string>();
-            return hashFromDatabase != null && hashFromDatabase == hash;
-        }
-
-
-        private string HashPassword(string password)
-        {
-            var random = new Random();
-            var salt = String.Format("{0:x8}", random.Next(0x10000000));
-            var pepper = String.Format("{0:x8}", random.Next(0x10000000));
-            var passwordHash = salt + password + pepper;
-            passwordHash = _encryptor.Encrypt(passwordHash);
-            return salt + passwordHash + pepper;
-        }
-
-        private bool IsPasswordEqual(string password, string hashedPassword)
-        {
-            var salt = hashedPassword.Substring(0, 8);
-            var pepper = hashedPassword.Substring(hashedPassword.Length - 8, 8);
-
-            var passwordHash = salt + _encryptor.Encrypt(salt + password + pepper) + pepper;
-
-            return hashedPassword == passwordHash;
-        }
+       
     }
 }

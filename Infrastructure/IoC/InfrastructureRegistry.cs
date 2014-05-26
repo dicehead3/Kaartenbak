@@ -1,4 +1,6 @@
 ﻿using Infrastructure.Services;
+using Infrastructure.Services.Login;
+using Infrastructure.Services.User;
 using StructureMap.Configuration.DSL;
 using StructureMap.Pipeline;
 

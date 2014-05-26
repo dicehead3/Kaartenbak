@@ -1,1 +1,1 @@
-﻿ALTER TABLE Users ADD Password varchar(200)
+﻿ALTER TABLE Users ADD Password varchar(511)
