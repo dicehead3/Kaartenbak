@@ -18,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{54B522
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{60B44181-F236-4431-9D82-EC9C70138328}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{69F779B7-10F0-4EA2-A208-0508B8D00C6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1C4F1F5F-7D91-41CB-8ECA-E05338662F3D}"
@@ -34,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{BA9DDB
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseHelper", "DatabaseHelper\DatabaseHelper.csproj", "{6D2EE720-AFA2-421D-A24C-7DC76378A35B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web2\Web.csproj", "{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,18 +93,6 @@ Global
 		{444C2AE3-043F-4507-ACF4-A1917FC42948}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{444C2AE3-043F-4507-ACF4-A1917FC42948}.Release|x64.ActiveCfg = Release|x64
 		{444C2AE3-043F-4507-ACF4-A1917FC42948}.Release|x64.Build.0 = Release|x64
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|x64.ActiveCfg = Debug|x64
-		{60B44181-F236-4431-9D82-EC9C70138328}.Debug|x64.Build.0 = Debug|x64
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|x64.ActiveCfg = Release|x64
-		{60B44181-F236-4431-9D82-EC9C70138328}.Release|x64.Build.0 = Release|x64
 		{69F779B7-10F0-4EA2-A208-0508B8D00C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69F779B7-10F0-4EA2-A208-0508B8D00C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F779B7-10F0-4EA2-A208-0508B8D00C6A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -135,6 +123,16 @@ Global
 		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6D2EE720-AFA2-421D-A24C-7DC76378A35B}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C2D6FCF2-D4CB-4776-8DBD-2675C1550791}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace Domain.BaseObjects
             return Id != 0;
         }
 
-        public virtual DateTime Created { get; private set; }
-        public virtual DateTime Modified { get; private set; }
+        public virtual DateTime Created { get; protected set; }
+        public virtual DateTime Modified { get; protected set; }
     }
 }

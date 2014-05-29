@@ -47,7 +47,6 @@ namespace Data.Repositories
             {
                 throw new InvalidOperationException("User already exists");
             }
-
             using (var transaction = new Transaction(_session))
             {
                 base.Save(user);

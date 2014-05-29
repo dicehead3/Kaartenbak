@@ -5,6 +5,7 @@ using NHibernate;
 using StructureMap.Configuration.DSL;
 using StructureMap.Web;
 using Utilities.IoC;
+using Web2;
 using IContainer = Utilities.IoC.IContainer;
 
 namespace Web.IoC
