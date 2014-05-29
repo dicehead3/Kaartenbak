@@ -16,11 +16,7 @@ namespace Domain.Users.Services
 
         public User RegisterUser(RegisterUserRequest request)
         {
-            var user = _userFactory.CreateUser(request.Name, request.Username, request.Email);
-
-            _authenticationRepository.SetPassword(user.Id, request.Password);
-
-            return user;
+            return _userFactory.CreateUser(request.Name, request.Username, request.Email, request.Password);
         }
     }
 }

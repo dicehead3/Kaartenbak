@@ -71,7 +71,7 @@ namespace Web.Controllers
             };
 
             var registerResponse = _loginService.Register(registerRequest);
-            return null;
+            return registerResponse;
 
         }
     }
