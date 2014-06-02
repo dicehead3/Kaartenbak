@@ -3,14 +3,16 @@
 
         $scope.selectedTab = "dashboard";
 
-
-        $rootScope.user.name = "strikejester";
+        $rootScope.user = {
+            name: "strikejester"
+        };
+        //$rootScope.user.name = "strikejester";
 
 
         $scope.goToDashboard = function() {
 
             $scope.selectedTab = "dashboard";
-
+            $scope.$apply($location.url("/Overview/Dashboard"));
         };
 
         $scope.goToCollection = function() {

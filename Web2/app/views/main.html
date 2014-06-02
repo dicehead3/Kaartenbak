@@ -1,36 +1,67 @@
-﻿<div data-ng-controller="overviewController">
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        
+        <title>MTG Gamer</title>
+        <script src="/Scripts/AngularJS/angular.js"></script>
+        <script src="/Scripts/AngularJS/angular-route.js"></script>
+        <script src="/Scripts/AngularJs/angular.isEmpty.js"></script>
 
-    <div class="row">
+        <script src="/app/app.bootstrap.js"></script>
+        <script src="/app/controllers/dashboardController.js"></script>
+        <script src="/app/controllers/loginController.js"></script>
+        <script src="/app/controllers/overviewController.js"></script>
+        <script src="/app/directives/validators/equals.js"></script>
+        <script src="/app/services/userService.js"></script>
 
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" ng-click="goToDashboard()">MTG Collector</a>
-                </div>
+        
+        <script src="/Scripts/JQuery/jquery-2.1.1.js"></script>
 
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li ng-class="{active: (selectedTab == 'dashboard')}">
-                            <a ng-click="goToDashboard()">Home</a>
-                        </li>
-                        <li ng-class ="{active: (selectedTab == 'collection')}">
-                            <a ng-click="goToCollection()">Collection</a>
-                        </li>
-                        <li ng-class ="{active: (selectedTab == 'decks')}">
-                            <a ng-click="goToDecks()">Decks</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">{{$root.user.name}}</a></li>
-                    </ul>
+        
+        <link href="/Content/Bootstrap/bootstrap-theme.css" rel="stylesheet"/>
+        <link href="/Content/Bootstrap/bootstrap.css" rel="stylesheet"/>
+        <link href="/Content/Bootstrap/dashboard.css" rel="stylesheet"/>
+
+    </head>
+    <body data-ng-app="mainApp">
+        <div data-ng-controller="overviewController">
+
+            <div class="row">
+
+                <div class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" ng-click="goToDashboard()">MTG Collector</a>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li ng-class="{active: (selectedTab == 'dashboard')}">
+                                    <a ng-click="goToDashboard()">Home</a>
+                                </li>
+                                <li ng-class="{active: (selectedTab == 'collection')}">
+                                    <a ng-click="goToCollection()">Collection</a>
+                                </li>
+                                <li ng-class="{active: (selectedTab == 'decks')}">
+                                    <a ng-click="goToDecks()">Decks</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="../navbar/">{{$root.user.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div data-ng-view></div>
         </div>
-    </div>
-</div>
+    </body>
+</html>
