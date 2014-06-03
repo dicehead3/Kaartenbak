@@ -1,0 +1,50 @@
+﻿<div class="modal-header">
+    <h3>
+        <span class="glyphicon glyphicon-log-in"></span>
+        Sign in
+    </h3>
+</div>
+<div class="modal-body">
+    <error text="errorText" show="showError"></error>
+
+    <br />
+
+    <form class="form-horizontal" role="form" name="form.login_form" novalidate>
+        <div class="form-group">
+            <label class="col-lg-2 col-md-3 control-label">
+                Username
+            </label>
+            <div class="col-lg-5 col-md-7">
+                <input type="text" class="form-control" name="username" placeholder="Username" ng-model="user.username" ng-required="true" />
+
+                <span class="field-validation-error" ng-show="form.login_form.username.$error.required && form.submitted">
+                    <span class=" input-validation-error error">
+                        {{t.settings.fieldRequired}}
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-md-3 control-label">
+                Password
+            </label>
+            <div class="col-lg-5 col-md-7">
+                <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" ng-required="true" />
+
+                <span class="field-validation-error" ng-show="form.login_form.password.$error.required && form.submitted">
+                    <span class=" input-validation-error error">
+                        {{t.settings.fieldRequired}}
+                    </span>
+                </span>
+
+            </div>
+        </div>
+
+        <div style="clear: both"></div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="login()" >Sign in</button>
+    <button class="btn btn-default" ng-click="cancel()" >Cancel</button>
+</div>

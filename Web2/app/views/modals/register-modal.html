@@ -1,0 +1,102 @@
+﻿<div class="modal-header">
+    <h3>Sign in</h3>
+</div>
+<div class="modal-body">
+    <error text="errorText" show="showError"></error>
+
+    <br />
+
+    <form class="form-horizontal" role="form" name="login_form" novalidate>
+        <div class="form-group">
+            <label class="col-lg-2 col-md-3 control-label">
+                {{t.settings.oldPassword}}
+            </label>
+            <div class="col-lg-3 col-md-5">
+                <input type="password" class="form-control" name="oldPassword" placeholder="{{t.settings.oldPassword}}" ng-model="passwordInfo.oldPassword" ng-required="true" ng-maxlength="100" />
+
+                <span class="field-validation-error" ng-show="form.change_password_form.oldPassword.$error.required && form.submitted">
+                    <span class=" input-validation-error error">
+                        {{t.settings.fieldRequired}}
+                    </span>
+                </span>
+
+                <span class="field-validation-error" ng-show="form.change_password_form.oldPassword.$error.maxlength">
+                    <span class=" input-validation-error error">
+                        {{t.settings.maxlength}} 100
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-md-3 control-label">
+                {{t.settings.newPassword}}
+            </label>
+            <div class="col-lg-3 col-md-5">
+                <input type="password" class="form-control" name="newPassword" placeholder="{{t.settings.newPassword}}" ng-model="passwordInfo.newPassword" ng-required="true" ng-maxlength="100" />
+
+                <span class="field-validation-error" ng-show="form.change_password_form.newPassword.$error.maxlength">
+                    <span class=" input-validation-error error">
+                        {{t.settings.maxlength}} 100
+                    </span>
+                </span>
+
+                <span class="field-validation-error" ng-show="form.change_password_form.newPassword.$error.required && form.submitted">
+                    <span class=" input-validation-error error">
+                        {{t.settings.fieldRequired}}
+                    </span>
+                </span>
+
+                <span class="field-validation-error" ng-show="form.change_password_form.newPassword.$error.password && passwordInfo.newPassword.length > 0">
+                    <span class=" input-validation-error error">
+                        {{t.settings.passwordNotValid }}
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-md-3 control-label">
+                {{t.settings.passwordVerification}}
+            </label>
+            <div class="col-lg-3 col-md-5">
+                <input type="password" class="form-control" name="passwordVerification" placeholder="{{t.settings.passwordVerification}}" ng-model="passwordInfo.passwordVerification" equals="passwordInfo.newPassword" ng-required="true" ng-maxlength="100" />
+
+                <span class="field-validation-error" ng-show="form.change_password_form.passwordVerification.$error.maxlength">
+                    <span class=" input-validation-error error">
+                        {{t.settings.maxlength}} 100
+                    </span>
+                </span>
+
+                <span class="field-validation-error" ng-show="form.change_password_form.passwordVerification.$error.equals && passwordInfo.newPassword.length > 0 && passwordInfo.passwordVerification.length > 0">
+                    <span class=" input-validation-error error">
+                        {{t.settings.passwordsDontMatch}}
+                    </span>
+                </span>
+
+                <span class="field-validation-error" ng-show="form.change_password_form.passwordVerification.$error.required && form.submitted">
+                    <span class=" input-validation-error error">
+                        {{t.settings.fieldRequired}}
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 alert alert-info">
+            <strong>{{t.settings.passwordFormatHeader}}</strong>
+            <ul style="list-style-type: disc; padding:5px 15px 5px 15px;">
+                <li>{{t.settings.passwordFormatDemand1}}</li>
+                <li>{{t.settings.passwordFormatDemand2}}</li>
+                <li>{{t.settings.passwordFormatDemand3}}</li>
+            </ul>
+            <span ng-bind-html="t.settings.passwordFormatExample"></span>
+        </div>
+
+        <div style="clear: both"></div>
+    </form>
+</div>
+<div class="modal-footer">
+    <loading-small show="isBlocked"></loading-small>
+    <button class="btn btn-primary" ng-click="confirm()" ng-disabled="isBlocked">{{t.settings.changePassword}}</button>
+    <button class="btn btn-default" ng-click="cancel()" ng-disabled="buttonsDisabled">{{t.settings.cancel}}</button>
+</div>

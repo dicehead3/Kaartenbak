@@ -1,5 +1,7 @@
-﻿app.controller('loginController', ["$scope", "$location", "loginService",
-    function ($scope, $location, loginService) {
+﻿app.controller('loginController', ["$scope", "$rootScope", "$location", "loginService",
+    function ($scope, $rootScope, $location, loginService) {
+
+        $rootScope.loginPage = true;
 
     $scope.user = {
         username: '',
@@ -30,6 +32,8 @@
             
             if (data.loginSuccessfull == true) {
 
+                $rootScope.loginPage = false;
+
                 $scope.$apply($location.url("/Overview/Dashboard"));
             } else {
                 //add flash message to show an error occured
@@ -50,7 +54,11 @@
 
             if (data.registerSuccessfull == true) {
 
+                $rootScope.loginPage = false;
+
                 $scope.registerSuccessfull = true;
+
+                $scope.$apply($location.url("/Overview/Dashboard"));
             } else {
                 console.log('register error', data.Message);
             }
