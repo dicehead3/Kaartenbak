@@ -8,6 +8,10 @@
         $scope.form = {
             submitted: false
         };
+        $scope.error = {
+            showError: false,
+            errorText: ''
+        };
 
         $scope.login = function() {
 
@@ -24,8 +28,8 @@
                     $modalInstance.close(data.user);
                 } else {
 
-                    $scope.showError = true;
-                    $scope.errorText = data.Message;
+                    $scope.error.showError = true;
+                    $scope.error.errorText = data.Message;
                 }
             });
         };

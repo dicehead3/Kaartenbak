@@ -6,7 +6,7 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
-            var filePath = Server.MapPath("~/app/views/main.html");
+            var filePath = Server.MapPath("~/app/views/menu.html");
             if (System.IO.File.Exists(filePath))
             {
                 return File(filePath, "text/html");

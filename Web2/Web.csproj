@@ -180,15 +180,17 @@
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\controllers\modals\loginModalController.js" />
     <Content Include="app\controllers\modals\registerModalController.js" />
-    <Content Include="app\controllers\overviewController.js" />
-    <Content Include="app\directives\elements\error-message.js" />
+    <Content Include="app\controllers\menuController.js" />
+    <Content Include="app\controllers\profileController.js" />
     <Content Include="app\directives\validators\equals.js" />
     <Content Include="app\services\loginService.js" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\main.html" />
+    <Content Include="app\views\menu.html" />
     <Content Include="app\views\modals\login-modal.html" />
     <Content Include="app\views\modals\register-modal.html" />
+    <Content Include="app\views\profile.html" />
     <Content Include="Content\Bootstrap\bootstrap-theme.css" />
     <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.css" />
@@ -197,6 +199,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\kaartenbak.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\Bootstrap\bootstrap.css.map" />
@@ -234,7 +237,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\states\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>

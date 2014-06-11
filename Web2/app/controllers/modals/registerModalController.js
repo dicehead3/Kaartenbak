@@ -1,39 +1,38 @@
-﻿app.controller('ChangeEmailModalController', ['$scope', '$modalInstance', 'userId', 'userService', '$translate',
-    function ($scope, $modalInstance, userId, userService, $translate) {
+﻿app.controller('registerModalController', ['$scope', '$modalInstance', 'loginService', 
+    function ($scope, $modalInstance, loginService) {
 
-        $scope.emailInfo = {
+        $scope.user = {
+            username: '',
+            name: '',
+            email: '',
             password: '',
-            newEmail: '',
-            emailVerification: ''
+            passwordVerification: ''
         };
         $scope.form = {
             submitted: false
         };
+        $scope.error = {
+            showError: false,
+            errorText: ''
+        };
 
-        $scope.confirm = function () {
+        $scope.register = function () {
+
             $scope.form.submitted = true;
 
-            if ($scope.form.change_email_form.$invalid) {
+            if ($scope.form.register_form.$invalid) {
                 return;
             }
 
-            $scope.isBlocked = true;
+            loginService.register($scope.user).success(function (data) {
 
-            userService.changeEmail(userId, $scope.emailInfo).success(function (data) {
+                if (data.registerSuccessfull == true) {
 
-                $scope.isBlocked = false;
-
-                if (data.result == 'PasswordIncorrect') {
-                    $scope.showError = true;
-                    $scope.errorText = $translate.translations.settings.oldPasswordIncorrect;
-                } else if (data.result == 'NotMatching') {
-                    $scope.showError = true;
-                    $scope.errorText = $translate.translations.settings.emailNotMatching;
-                } else if (data.result == 'Invalid') {
-                    $scope.showError = true;
-                    $scope.errorText = $translate.translations.settings.noValidEmailAddress;
+                    $modalInstance.close(data.user);
                 } else {
-                    $modalInstance.close($scope.emailInfo.newEmail);
+
+                    $scope.error.showError = true;
+                    $scope.error.errorText = data.Message;
                 }
             });
         };

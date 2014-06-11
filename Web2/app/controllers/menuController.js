@@ -1,28 +1,12 @@
-﻿app.controller("overviewController", [
-    "$scope", "$rootScope", "$modal", function($scope, $rootScope, $modal) {
+﻿app.controller("menuController", [
+    "$scope", "$rootScope", "$modal", "$location", function($scope, $rootScope, $modal, $location) {
 
-        $scope.selectedTab = "dashboard";
+        $rootScope.selectedTab = "dashboard";
 
         //User should be injected
         $rootScope.user = null;/*{
             name: "strikejester"
         };*/
-
-        $scope.goToDashboard = function() {
-
-            $scope.selectedTab = "dashboard";
-            $scope.$apply($location.url("/Overview/Dashboard"));
-        };
-
-        $scope.goToCollection = function() {
-
-            $scope.selectedTab = "collection";
-        };
-
-        $scope.goToDecks = function() {
-
-            $scope.selectedTab = "decks";
-        };
 
         $scope.logout = function() {
 
@@ -42,6 +26,20 @@
 
                 $rootScope.user = user;
                 //go to dashboard
+            });
+        };
+
+        $scope.register = function() {
+
+            var modalInstance = $modal.open({
+                templateUrl: '/app/views/modals/register-modal.html',
+                controller: 'registerModalController',
+                keyboard: false
+            });
+
+            modalInstance.result.then(function(user) {
+
+                $rootScope.user = user;
             });
         };
     }
