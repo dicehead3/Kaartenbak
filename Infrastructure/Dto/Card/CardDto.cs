@@ -22,7 +22,7 @@ namespace Infrastructure.Dto.Card
         public int Loyalty { get; set; }
         public Rarity Rarity { get; set; }
         public string Artist { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public DateTime ReleasedAt { get; set; }
 
         public IEnumerable<RulingDto> Rulings { get; set; }
         public IEnumerable<FormatDto> Formats { get; set; } 

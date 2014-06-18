@@ -35,7 +35,7 @@ namespace Infrastructure.Services.User
                     Flavor = c.Flavor,
                     Formats = c.Formats.Select(f => new FormatDto
                     {
-                        Legalty = f.Legality,
+                        Legality = f.Legality,
                         Name = f.Name
                     }),
                     Id = c.Id,
@@ -44,10 +44,10 @@ namespace Infrastructure.Services.User
                     Name = c.Name,
                     Power = c.Power,
                     Rarity = c.Rarity,
-                    ReleaseDate = c.ReleaseDate,
+                    //ReleaseDate = c.ReleaseDate,
                     Rulings = c.Rulings.Select(r => new RulingDto
                     {
-                        Date = r.ReleasedAt,
+                        ReleasedAt = r.ReleasedAt,
                         Rule = r.Rule
                     }),
                     SearchName = c.SearchName,
@@ -69,7 +69,7 @@ namespace Infrastructure.Services.User
                     Flavor = c.Flavor,
                     Formats = c.Formats.Select(f => new FormatDto
                     {
-                        Legalty = f.Legality,
+                        Legality = f.Legality,
                         Name = f.Name
                     }),
                     Id = c.Id,
@@ -78,10 +78,10 @@ namespace Infrastructure.Services.User
                     Name = c.Name,
                     Power = c.Power,
                     Rarity = c.Rarity,
-                    ReleaseDate = c.ReleaseDate,
+                    ReleasedAt = c.ReleaseDate,
                     Rulings = c.Rulings.Select(r => new RulingDto
                     {
-                        Date = r.ReleasedAt,
+                        ReleasedAt = r.ReleasedAt,
                         Rule = r.Rule
                     }),
                     SearchName = c.SearchName,

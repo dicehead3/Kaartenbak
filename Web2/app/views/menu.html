@@ -12,9 +12,9 @@
         <script src="/Scripts/Bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
         <script src="/app/app.bootstrap.js"></script>
-        <script src="/app/controllers/dashboardController.js"></script>
+        <!--<script src="/app/controllers/dashboardController.js"></script>-->
+        <!--<script src="/app/controllers/profileController.js"></script>-->
         <script src="/app/controllers/menuController.js"></script>
-        <script src="/app/controllers/loginController.js"></script>
         <script src="/app/controllers/modals/loginModalController.js"></script>
         <script src="/app/controllers/modals/registerModalController.js"></script>
         <script src="/app/directives/validators/equals.js"></script>
@@ -28,7 +28,7 @@
     <body data-ng-app="mainApp">
         <div data-ng-controller="menuController">
 
-            <div class="row" ng-if="!$root.loginPage">
+            <div class="row">
 
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
@@ -39,14 +39,15 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#dashboard" >MTG Collector</a>
+                            <a class="navbar-brand" href="#collection" ng-if="$root.user != null">MTG Collector</a>
+                            <a class="navbar-brand" href="#index" ng-if="$root.user == null">MTG Collector</a>
                         </div>
 
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav" ng-if="$root.user != null">
-                                <li ng-class="{active: ($root.selectedTab == 'dashboard')}">
+                                <!--<li ng-class="{active: ($root.selectedTab == 'dashboard')}">
                                     <a href="#dashboard">Dashboard</a>
-                                </li>
+                                </li>-->
                                 <li ng-class="{active: ($root.selectedTab == 'collection')}">
                                     <a href="#collection">Collection</a>
                                 </li>

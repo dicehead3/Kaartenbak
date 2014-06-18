@@ -72,6 +72,9 @@
     <Compile Include="Cards\Format.cs" />
     <Compile Include="Cards\Rarity.cs" />
     <Compile Include="Cards\Ruling.cs" />
+    <Compile Include="Cards\Services\CardService.cs" />
+    <Compile Include="Cards\Services\CreateCardRequest.cs" />
+    <Compile Include="Cards\Services\ICardService.cs" />
     <Compile Include="Users\AuthenticationResult.cs" />
     <Compile Include="BaseObjects\Entity.cs" />
     <Compile Include="Cards\Card.cs" />

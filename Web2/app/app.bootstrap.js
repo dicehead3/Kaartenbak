@@ -5,11 +5,28 @@ app.config([
 
         $routeProvider
             .when('/Index', {templateUrl: '/app/views/main.html'})
-            .when('/Overview', { templateUrl: '/app/views/menu.html' })
             .when('/Collection', { templateUrl: '/app/views/overview/collection.html' })
-            .when('/Dashboard', { templateUrl: '/app/views/dashboard.html', controller: 'dashboardController' })
-            .when('/Profile', { templateUrl: '/app/views.profile.html'})
+            //.when('/Dashboard', { templateUrl: '/app/views/dashboard.html', controller: 'dashboardController' })
+            //.when('/Profile', { templateUrl: '/app/views.profile.html'})
             .otherwise({ redirectTo: '/Index' });
+    }
+]);
+
+app.run([
+    '$rootScope', '$location', function($rootScope, $location) {
+
+        // register listener to watch route changes
+        $rootScope.$on("$routeChangeStart", function(event, next, current) {
+            if ($rootScope.loggedUser == null) {
+                // no logged user, we should be going to #index
+                if (next.templateUrl == "main.html") {
+                    // already going to #index, no redirect needed
+                } else {
+                    // not going to #index, we should redirect now
+                    $location.path("/Index");
+                }
+            }
+        });
     }
 ]);
 

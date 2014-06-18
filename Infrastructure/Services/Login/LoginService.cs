@@ -66,17 +66,17 @@ namespace Infrastructure.Services.Login
                 Flavor = x.Flavor,
                 Formats = x.Formats.Select(f => new FormatDto
                 {
-                    Legalty = f.Legality,
+                    Legality = f.Legality,
                     Name = f.Name
                 }),
                 Loyalty = x.Loyalty,
                 ManaCost = x.ManaCost,
                 Power = x.Power,
                 Rarity = x.Rarity,
-                ReleaseDate = x.ReleaseDate,
+                ReleasedAt = x.ReleaseDate,
                 Rulings = x.Rulings.Select(r => new RulingDto
                 {
-                    Date = r.ReleasedAt,
+                    ReleasedAt = r.ReleasedAt,
                     Rule = r.Rule
                 }),
                 SearchName = x.SearchName,
